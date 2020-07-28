@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
 
@@ -25,11 +28,14 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">使用者:迪奧·布蘭度</a>
+                    <a class="nav-link" href="#"><?php
+                    echo $_SESSION['account'];
+                    ?></a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button onclick="showMM()" class="btn btn-outline-success my-2 my-sm-0" type="button">登出</button>
+            <a href="logOut.php">logout</a>
+            <form class="form-inline my-2 my-lg-0" action="logOut.php">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="user_id">登出</button>
             </form>
         </div>
     </nav>
@@ -119,6 +125,7 @@
                     
                     $receive_num = 0;
                     mysqli_close($link);
+                
                     
                     
                 }               
@@ -193,7 +200,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 
     <!--Script區-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
