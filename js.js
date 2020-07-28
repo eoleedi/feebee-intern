@@ -17,7 +17,7 @@ function get_cat(id){
         }
         
         
-        $('#category').modal('hide')
+        $('#category').modal('hide');
 
         $('#temp1').val($('#cat_id_'+ id.toString()).html());
         $('#temp2').val($('#cat_title_'+ id.toString()).html());
