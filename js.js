@@ -11,10 +11,16 @@ function get_cat(id){
         cat_id = 0;
     })
 }
+
 $('.cat_btn').click(function(){
     var id = $(event.target).val();
     get_cat(id)
 })
+
+
+function showMM() {
+    $('#hidden_text').modal('show'); 
+}
 
 
 

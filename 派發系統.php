@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button>
+                <button onclick="showMM()" class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button>
             </form>
         </div>
     </nav>
@@ -171,12 +171,55 @@
             </div>      
         </div>
 
+        <!--隱藏區塊-->
+        <div id="hidden_text" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">選擇分類</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" value="手機與智慧穿戴">手機與智慧穿戴</button>
+                    <button type="button" class="btn btn-outline-secondary" value="手錶與飾品">手錶與飾品</button>
+                    <button type="button" class="btn btn-outline-secondary" value="交通與旅遊">交通與旅遊</button>
+                    <button type="button" class="btn btn-outline-secondary" value="居家與家具">居家與家具</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" value="服裝與鞋包">服裝與鞋包</button>
+                    <button type="button" class="btn btn-outline-secondary" value="保健與護理">保健與護理</button>
+                    <button type="button" class="btn btn-outline-secondary" value="相機與攝影">相機與攝影</button>
+                    <button type="button" class="btn btn-outline-secondary" value="美妝與保養">美妝與保養</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" value="食品與特產">食品與特產</button>
+                    <button type="button" class="btn btn-outline-secondary" value="視聽與家電">視聽與家電</button>     
+                    <button type="button" class="btn btn-outline-secondary" value="運動與休閒">運動與休閒</button>
+                    <button type="button" class="btn btn-outline-secondary" value="電腦與周邊">電腦與周邊</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" value="圖書與文具">圖書與文具</button>
+                    <button type="button" class="btn btn-outline-secondary" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                    <button type="button" class="btn btn-outline-secondary" value="寵物與園藝">寵物與園藝</button>            
+                    <button type="button" class="btn btn-outline-secondary" value="情趣用品">情趣用品</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" value="無法分類">無法分類</button>
+                    <button type="button" class="btn btn-outline-secondary" value="選擇分類">清除</button>
+                </div>
+
+            </div>      
+        </div>
+
     </div>
     
     <!--Scrip區-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js.js?v=13" charset="UTF-8"></script>
+    <script type="text/javascript" src="js.js?v=1118" charset="UTF-8"></script>
 </body>
 </html>
