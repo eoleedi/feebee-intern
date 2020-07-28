@@ -1,0 +1,28 @@
+#table_stats {
+    table-layout:fixed;
+    word-break:break-all;
+    border-collapse: collapse;
+}
+#cat_top{
+    background-color: #e9ecef;
+}
+.sbs_no{
+    width: 5%;
+}
+.sbs_title{
+    width: 50%;
+}
+.sbs_judge{
+    width: 40%;
+}
+.sbs_status{
+    width: 5%;
+}
+.table{
+    word-break:break-all;
+    word-wrap:break-all;
+}
+.btn-group .btn{
+    width:150px;
+    height:75px;
+}
