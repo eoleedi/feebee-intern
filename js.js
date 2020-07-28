@@ -18,9 +18,6 @@ $('.cat_btn').click(function(){
 })
 
 
-function showMM() {
-    $('#hidden_text').modal('show'); 
-}
 
 
 
