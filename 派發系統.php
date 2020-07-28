@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>派發系統</title>
     <link rel=stylesheet type="text/css" href="bootstrap.css">
-    <link rel=stylesheet type="text/css" href="css.css?v=12">
+    <link rel=stylesheet type="text/css" href="css.css?v=13">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button onclick="showMM()" class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button>
+                <button onclick="showMM()" class="btn btn-outline-success my-2 my-sm-0" type="button">登出</button>
             </form>
         </div>
     </nav>
@@ -171,9 +171,30 @@
 
             </div>      
         </div>
-
     </div>
-    
+    <!--???????????????????????????????????????????????????????-->
+    <div id="text_hidden" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">tmp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <input id="temp1" type="text" disabled="disabled" value=""><br>
+                    <input id="temp2" type="text" disabled="disabled" value=""><br>
+                    <input id="temp3" type="text" disabled="disabled" value=""><br>
+                    <input id="temp4" type="text" disabled="disabled" value=""><br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <!--Scrip區-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
