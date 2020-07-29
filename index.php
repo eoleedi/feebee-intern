@@ -1,3 +1,13 @@
+<?php
+session_start();
+if ($_SESSION["account"] != TRUE){
+    header("location:index.php");
+    }
+else{
+    header("location:派發系統.php");
+}
+
+?>
 <!doctype html>
 <html>
 
