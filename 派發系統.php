@@ -74,87 +74,87 @@
 
                 <tbody id="cat_select">
 
-            <!--新增php-->
-            <?php
-                $receive_num = 0;
-                if (isset($_GET['receive_btn'])) {
-                    $link = mysqli_connect(
-                        'localhost',
-                        'root',
-                        '',
-                        'sbs_distribution'
-                    );
-                    
-                    $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
-                    $result = mysqli_query($link, $sql_status_check);
+                    <!--新增php-->
+                    <?php
+                        $receive_num = 0;
+                        if (isset($_GET['receive_btn'])) {
+                            $link = mysqli_connect(
+                                'localhost',
+                                'root',
+                                '',
+                                'sbs_distribution'
+                            );
+                            
+                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
+                            $result = mysqli_query($link, $sql_status_check);
 
-                    $data = mysqli_fetch_all($result);
-                    for($i=0; $i < count($data); $i++){
-                        $sql_clean = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 0, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                        $result = mysqli_query($link, $sql_clean);
-                        mysqli_commit($link);
-                    }
-
-                    $data = 0;
-                    $result = 0;
-
-                    $sql = "SELECT * FROM product WHERE product_status = 0";
-                    $result = mysqli_query($link, $sql);
-                    $data = mysqli_fetch_all($result);
-
-                    $receive_num = $_GET['receive_num'];
-
-                    $receive_max = 100;
-                    $data_max = count($data);
-
-                    if($data_max == 0){
-                        echo "<script>alert('大家很努力地做完了。');</script>";
-                    }
-                    if($receive_num > $receive_max){
-                        echo "<script>alert('超過上限，請重新輸入。');</script>";
-                    }
-                    elseif($receive_num > 0 && $receive_num <= 100){
-                        if($data_max < 100){
-                            for($i=0; $i < $data_max; $i++){
-                                $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                $result = mysqli_query($link, $sql_change_status);
+                            $data = mysqli_fetch_all($result);
+                            for($i=0; $i < count($data); $i++){
+                                $sql_clean = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 0, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
+                                $result = mysqli_query($link, $sql_clean);
                                 mysqli_commit($link);
                             }
 
-                            for($i=1; $i < $data_max+1; $i++){
-                                echo '<tr id='.'tr_id_'.$i.'>
-                                        <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                        <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
-                                        <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
-                                        <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
-                                    </tr>';
-                            }; 
-                        }
-                        if($data_max > 100){
-                            for($i=0; $i < $receive_num; $i++){
-                                $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                $result = mysqli_query($link, $sql_change_status);
-                                mysqli_commit($link);
-                            }
+                            $data = 0;
+                            $result = 0;
 
-                            for($i=1; $i < $receive_num+1; $i++){
-                                echo '<tr id='.'tr_id_'.$i.'>
-                                        <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
-                                        <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
-                                        <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
-                                        <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
-                                    </tr>';
-                            }; 
-                        }
-                    }
-                    else{
-                        echo "<script>alert('別亂打，請重新輸入。');</script>";
-                    }
-                    
-                    $receive_num = 0;
-                    mysqli_close($link);
-                }               
-            ?>
+                            $sql = "SELECT * FROM product WHERE product_status = 0";
+                            $result = mysqli_query($link, $sql);
+                            $data = mysqli_fetch_all($result);
+
+                            $receive_num = $_GET['receive_num'];
+
+                            $receive_max = 100;
+                            $data_max = count($data);
+
+                            if($data_max == 0){
+                                echo "<script>alert('大家很努力地做完了。');</script>";
+                            }
+                            if($receive_num > $receive_max){
+                                echo "<script>alert('超過上限，請重新輸入。');</script>";
+                            }
+                            elseif($receive_num > 0 && $receive_num <= 100){
+                                if($data_max < 100){
+                                    for($i=0; $i < $data_max; $i++){
+                                        $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
+                                        $result = mysqli_query($link, $sql_change_status);
+                                        mysqli_commit($link);
+                                    }
+
+                                    for($i=1; $i < $data_max+1; $i++){
+                                        echo '<tr id='.'tr_id_'.$i.'>
+                                                <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
+                                                <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
+                                            </tr>';
+                                    }; 
+                                }
+                                if($data_max > 100){
+                                    for($i=0; $i < $receive_num; $i++){
+                                        $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
+                                        $result = mysqli_query($link, $sql_change_status);
+                                        mysqli_commit($link);
+                                    }
+
+                                    for($i=1; $i < $receive_num+1; $i++){
+                                        echo '<tr id='.'tr_id_'.$i.'>
+                                                <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
+                                                <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
+                                            </tr>';
+                                    }; 
+                                }
+                            }
+                            else{
+                                echo "<script>alert('別亂打，請重新輸入。');</script>";
+                            }
+                            
+                            $receive_num = 0;
+                            mysqli_close($link);
+                        }               
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -171,35 +171,37 @@
                         </button>
                     </div>
 
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary" value="手機與智慧穿戴">手機與智慧穿戴</button>
-                        <button type="button" class="btn btn-outline-secondary" value="手錶與飾品">手錶與飾品</button>
-                        <button type="button" class="btn btn-outline-secondary" value="交通與旅遊">交通與旅遊</button>
-                        <button type="button" class="btn btn-outline-secondary" value="居家與家具">居家與家具</button>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary" value="服裝與鞋包">服裝與鞋包</button>
-                        <button type="button" class="btn btn-outline-secondary" value="保健與護理">保健與護理</button>
-                        <button type="button" class="btn btn-outline-secondary" value="相機與攝影">相機與攝影</button>
-                        <button type="button" class="btn btn-outline-secondary" value="美妝與保養">美妝與保養</button>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary" value="食品與特產">食品與特產</button>
-                        <button type="button" class="btn btn-outline-secondary" value="視聽與家電">視聽與家電</button>
-                        <button type="button" class="btn btn-outline-secondary" value="運動與休閒">運動與休閒</button>
-                        <button type="button" class="btn btn-outline-secondary" value="電腦與周邊">電腦與周邊</button>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary" value="圖書與文具">圖書與文具</button>
-                        <button type="button" class="btn btn-outline-secondary" value="嬰幼與孕婦">嬰幼與孕婦</button>
-                        <button type="button" class="btn btn-outline-secondary" value="寵物與園藝">寵物與園藝</button>
-                        <button type="button" class="btn btn-outline-secondary" value="情趣用品">情趣用品</button>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary" value="無法分類">無法分類</button>
-                        <button type="button" class="btn btn-outline-secondary" value="選擇分類">清除</button>
-                    </div>
+                    <form method="post">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
+                        </div>
+                    </form>
+                    <ifram ></iframe>
 
                 </div>
             </div>
@@ -217,12 +219,37 @@
 
                     <div class="modal-body">
                         <form method="post">
-                            <input id="temp1" type="text" disabled="disabled" value=""><br>
-                            <input id="temp2" type="text" disabled="disabled" value=""><br>
-                            <input id="temp3" type="text" disabled="disabled" value=""><br>
-                            <input id="temp4" type="text" disabled="disabled" value=""><br>
+                            <input name="temp1" id="temp1" type="text" value=""><br>
+                            <input name="temp2" id="temp2" type="text" value=""><br>
+                            <input name="temp3" id="temp3" type="text" value=""><br>
+                            <input name="temp4" id="temp4" type="text" value=""><br>
                         </form>
                     </div>
+                    
+                    <?php
+                        $product_title = 0;
+                        $product_cat_change = 0;
+                        /*
+                        if (isset($_POST['button_cat'])) {
+                            $link = mysqli_connect(
+                                'localhost',
+                                'root',
+                                '',
+                                'sbs_distribution'
+                            );
+
+                            $product_title = $_POST['temp2'];
+                            $product_cat_change = $_POST['temp3'];
+
+                            $sql_change_status = "UPDATE product SET product_title = \"".$product_title."\",product_cat = \"".$product_cat_change."\", product_status = 2, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$product_title."\"";
+                            $result = mysqli_query($link, $sql_change_status);
+                            mysqli_commit($link);
+
+
+                            mysqli_close($link);
+                        }
+                        */
+                    ?>
 
                 </div>
             </div>
