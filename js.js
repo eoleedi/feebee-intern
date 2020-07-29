@@ -34,9 +34,9 @@ $('.cat_btn').click(function(){
     get_cat(id);
 })
 
-function showMM() {
+$('.btn-group .btn').click(function(){
     $('#text_hidden').modal('show');
-}
+})
 
 
 
