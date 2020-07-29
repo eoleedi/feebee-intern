@@ -1,8 +1,8 @@
 <?php
-//session_start();
-//if ($_SESSION["account"] != TRUE){
-//    header("location:index.php"); 
-//}
+session_start();
+if ($_SESSION["account"] != TRUE){
+    header("location:index.php"); 
+}
 ?>
 <!doctype html>
 <html>
