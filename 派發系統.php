@@ -1,8 +1,8 @@
 <?php
-//session_start();
-//if ($_SESSION["account"] != TRUE){
-//    header("location:index.php"); 
-//}
+session_start();
+if ($_SESSION["account"] != TRUE){
+    header("location:index.php"); 
+}
 ?>
 <!doctype html>
 <html>
@@ -74,8 +74,8 @@
 
                 <tbody id="cat_select">
 
-            <!--新增php-->
-            <?php
+                    <!--新增php-->
+                    <?php
                 $receive_num = 0;
                 if (isset($_GET['receive_btn'])) {
                     $link = mysqli_connect(
@@ -84,24 +84,10 @@
                         '',
                         'sbs_distribution'
                     );
-                    
-                    $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
-                    $result = mysqli_query($link, $sql_status_check);
-
-                    $data = mysqli_fetch_all($result);
-                    for($i=0; $i < count($data); $i++){
-                        $sql_clean = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 0, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                        $result = mysqli_query($link, $sql_clean);
-                        mysqli_commit($link);
-                    }
-
-                    $data = 0;
-                    $result = 0;
-
+                
                     $sql = "SELECT * FROM product WHERE product_status = 0";
                     $result = mysqli_query($link, $sql);
                     $data = mysqli_fetch_all($result);
-
                     $receive_num = $_GET['receive_num'];
 
                     $receive_max = 100;
@@ -115,12 +101,6 @@
                     }
                     elseif($receive_num > 0 && $receive_num <= 100){
                         if($data_max < 100){
-                            for($i=0; $i < $data_max; $i++){
-                                $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                $result = mysqli_query($link, $sql_change_status);
-                                mysqli_commit($link);
-                            }
-
                             for($i=1; $i < $data_max+1; $i++){
                                 echo '<tr id='.'tr_id_'.$i.'>
                                         <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
@@ -131,12 +111,6 @@
                             }; 
                         }
                         if($data_max > 100){
-                            for($i=0; $i < $receive_num; $i++){
-                                $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                $result = mysqli_query($link, $sql_change_status);
-                                mysqli_commit($link);
-                            }
-
                             for($i=1; $i < $receive_num+1; $i++){
                                 echo '<tr id='.'tr_id_'.$i.'>
                                         <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
@@ -153,6 +127,9 @@
                     
                     $receive_num = 0;
                     mysqli_close($link);
+                
+                    
+                    
                 }               
             ?>
                 </tbody>
@@ -216,12 +193,10 @@
                     </div>
 
                     <div class="modal-body">
-                        <form method="post">
-                            <input id="temp1" type="text" disabled="disabled" value=""><br>
-                            <input id="temp2" type="text" disabled="disabled" value=""><br>
-                            <input id="temp3" type="text" disabled="disabled" value=""><br>
-                            <input id="temp4" type="text" disabled="disabled" value=""><br>
-                        </form>
+                        <input id="temp1" type="text" disabled="disabled" value=""><br>
+                        <input id="temp2" type="text" disabled="disabled" value=""><br>
+                        <input id="temp3" type="text" disabled="disabled" value=""><br>
+                        <input id="temp4" type="text" disabled="disabled" value=""><br>
                     </div>
 
                 </div>
