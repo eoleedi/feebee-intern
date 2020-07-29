@@ -1,8 +1,8 @@
 <?php
-session_start();
-if ($_SESSION["account"] != TRUE){
-    header("location:index.php"); 
-}
+//session_start();
+//if ($_SESSION["account"] != TRUE){
+//    header("location:index.php"); 
+//}
 ?>
 <!doctype html>
 <html>
@@ -85,7 +85,7 @@ if ($_SESSION["account"] != TRUE){
                                 'sbs_distribution'
                             );
                             
-                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
+                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND  product_cat IS NULL";
                             $result = mysqli_query($link, $sql_status_check);
 
                             $data = mysqli_fetch_all($result);
@@ -94,7 +94,7 @@ if ($_SESSION["account"] != TRUE){
                                 $result = mysqli_query($link, $sql_clean);
                                 mysqli_commit($link);
                             }
-
+                            
                             $data = 0;
                             $result = 0;
 
@@ -173,91 +173,49 @@ if ($_SESSION["account"] != TRUE){
 
                     <form method="post">
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
                         </div>
-                    </form>
-                    <ifram ></iframe>
-
-                </div>
-            </div>
-        </div>
-        <!--暫存區-->
-        <div id="text_hidden" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">tmp</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form method="post">
-                            <input name="temp1" id="temp1" type="text" value=""><br>
-                            <input name="temp2" id="temp2" type="text" value=""><br>
-                            <input name="temp3" id="temp3" type="text" value=""><br>
-                            <input name="temp4" id="temp4" type="text" value=""><br>
-                        </form>
-                    </div>
+                        <br>
+                        <input name="temp1" id="temp1" type="text" value="123"><br>
+                        <input name="temp2" id="temp2" type="text" value="123"><br>
+                        <input name="temp3" id="temp3" type="text" value="123"><br>
+                        <input name="temp4" id="temp4" type="text" value="123"><br>
                     
-                    <?php
-                        $product_title = 0;
-                        $product_cat_change = 0;
-                        /*
-                        if (isset($_POST['button_cat'])) {
-                            $link = mysqli_connect(
-                                'localhost',
-                                'root',
-                                '',
-                                'sbs_distribution'
-                            );
-
-                            $product_title = $_POST['temp2'];
-                            $product_cat_change = $_POST['temp3'];
-
-                            $sql_change_status = "UPDATE product SET product_title = \"".$product_title."\",product_cat = \"".$product_cat_change."\", product_status = 2, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$product_title."\"";
-                            $result = mysqli_query($link, $sql_change_status);
-                            mysqli_commit($link);
-
-
-                            mysqli_close($link);
-                        }
-                        */
-                    ?>
+                    </form>
 
                 </div>
             </div>
-        </div>
+        </div>                    
+
     </div>
 
     <!--Script區-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.js?v=1118" charset="UTF-8"></script>

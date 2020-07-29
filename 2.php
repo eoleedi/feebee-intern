@@ -1,8 +1,8 @@
 <?php
-    $temp2 = 0;
-    if (isset($_GET['aaa'])) {
-        $temp2 = $_GET['temp2'];
-        echo $temp2;
+    $aaa = 0;
+    if (isset($_POST['aaa'])) {
+        $aaa = $_POST['temp2'];
+        echo $aaa;
     }
     else{
         echo 123;
@@ -16,9 +16,12 @@
 <head>
 </head>
 <body>
-<form method="get">
-    <input type="test" name="temp2" id="temp1" value="1232132"><br>
+<form method="post">
+    <input type="text" name="temp2" id="temp1" value="123"><br>
     <button type="submit" name="aaa">qwe</button>
+</form>
+<form method="post">
+
 </form>
 </body>
 </html>

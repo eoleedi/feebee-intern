@@ -6,7 +6,7 @@ function get_cat(id){
     $('.btn-group .btn').click(function(){
         var cat_id = '#cat_btn_' + id.toString(); 
         var cat_status_id = '#cat_status_' + id.toString(); 
-        $(cat_id).html('<button class=\"btn btn-outline-info my-2 my-sm-0\" type=\"submit\" onclick=\"showModal()\" value='+id+'>'+$(event.target).val()+'</button>');
+        $(cat_id + ' button').html($(event.target).val());
         if($(event.target).val() == '選擇分類'){
             $('#cat_status_' + id.toString()).html('no');
             $('#cat_status_' + id.toString()).css('color', 'red');
@@ -15,17 +15,36 @@ function get_cat(id){
             $('#cat_status_' + id.toString()).html('yes');
             $('#cat_status_' + id.toString()).css('color', 'green');
         }
-        
-        
-        $('#category').modal('hide');
 
-        $('#temp1').val($('#cat_id_'+ id.toString()).html());
-        $('#temp2').val($('#cat_title_'+ id.toString()).html());
-        $('#temp3').val($('#cat_btn_'+ id.toString()+' .btn').html());
-        $('#temp4').val($('#cat_status_'+ id.toString()).html());
+        var cat_title_id = $('#cat_title_'+ id.toString()).html();
+        var cat_btn_id = $('#cat_btn_'+ id.toString()+' .btn').html()
+        //$('#temp1').val($('#cat_id_'+ id.toString()).html());
+        //$('#temp2').val($('#cat_title_'+ id.toString()).html());
+        //$('#temp3').val($('#cat_btn_'+ id.toString()+' .btn').html());
+        //$('#temp4').val($('#cat_status_'+ id.toString()).html());
 
         id = 0;
         cat_id = 0;
+
+        $.ajax({
+            type: "POST",
+            url: "cat_ajax.php",
+            data: {
+                'cat_title_id' : cat_title_id,
+                'cat_btn_id' : cat_btn_id,
+            },
+            dataType: "json",
+            error: function (xhr) { 
+                //alert("錯誤"+xhr.responseText);  
+                //return false;
+            },
+            success: function(data){
+                //alert(data.rcode);
+            }
+            
+        });
+
+        
     })
 }
 
@@ -34,9 +53,6 @@ $('.cat_btn').click(function(){
     get_cat(id);
 })
 
-$('.btn-group .btn').click(function(){
-    $('#text_hidden').modal('show');
-})
 
 
 
