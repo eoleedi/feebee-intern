@@ -37,7 +37,7 @@
             <tr>
                 <td align="center">
                     <font color="#000000">密碼:</font>
-                    <input name="password" type="text" size="20">
+                    <input name="password" type="password" size="20">
                 </td>
             </tr>
             <tr>
