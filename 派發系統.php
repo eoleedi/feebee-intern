@@ -174,31 +174,31 @@
                     <form method="post">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
+                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
                         </div>
                         <br>
                         <input name="temp1" id="temp1" type="text" value="123"><br>
