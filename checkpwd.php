@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 $link = mysqli_connect('localhost','root','','sbs_distribution');
 $account = $_POST["account"];
 $sql = "SELECT * FROM User WHERE user_id = '$account'";
@@ -13,9 +13,10 @@ if($_POST['password']==$row[1]){
     mysqli_free_result($result);
     mysqli_close($link);
     
-    setcookie("id",$id);
-    setcookie("passed","True");
-    header("location:main.php");    
+    
+    $_SESSION['account'] = $_POST['account'];
+    header("location:派發系統.php");  
+    exit();
  }
 
 

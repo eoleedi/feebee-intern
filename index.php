@@ -13,9 +13,7 @@
             } else {
                 myForm.submit();
             }
-
         }
-
     </script>
 </head>
 

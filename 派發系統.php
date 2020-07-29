@@ -1,5 +1,8 @@
 <?php
 session_start();
+if ($_SESSION["account"] != TRUE){
+    header("location:index.php"); 
+}
 ?>
 <!doctype html>
 <html>
@@ -28,18 +31,17 @@ session_start();
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?php
+                    <h4><a class="nav-link" href="#"><?php
                     echo $_SESSION['account'];
-                    ?></a>
+                        ?></a></h4>
                 </li>
             </ul>
-            <a href="logOut.php">logout</a>
             <form class="form-inline my-2 my-lg-0" action="logOut.php">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="user_id">登出</button>
             </form>
         </div>
     </nav>
-    
+
     <br>
     <!--派發系統-->
     <div style="background-color:white" align="center">
@@ -58,22 +60,22 @@ session_start();
             <br>
         </div>
 
-    <div>
-        <table class="table">
+        <div>
+            <table class="table">
 
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col" class="sbs_no">筆數</th>
-                    <th scope="col" class="sbs_title">標題</th>
-                    <th scope="col" class="sbs_judge">判斷</th>
-                    <th scope="col" class="sbs_status">狀態</th>                  
-                </tr>
-            </thead>
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="sbs_no">筆數</th>
+                        <th scope="col" class="sbs_title">標題</th>
+                        <th scope="col" class="sbs_judge">判斷</th>
+                        <th scope="col" class="sbs_status">狀態</th>
+                    </tr>
+                </thead>
 
-            <tbody id="cat_select">
+                <tbody id="cat_select">
 
-            <!--新增php-->
-            <?php
+                    <!--新增php-->
+                    <?php
                 $receive_num = 0;
                 if (isset($_GET['receive_btn'])) {
                     $link = mysqli_connect(
@@ -130,76 +132,76 @@ session_start();
                     
                 }               
             ?>
-            </tbody>
-        </table>
-    </div>
-
-
-    <!--選擇分類頁面-->
-    <div id="category" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">選擇分類</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-secondary" value="手機與智慧穿戴">手機與智慧穿戴</button>
-                    <button type="button" class="btn btn-outline-secondary" value="手錶與飾品">手錶與飾品</button>
-                    <button type="button" class="btn btn-outline-secondary" value="交通與旅遊">交通與旅遊</button>
-                    <button type="button" class="btn btn-outline-secondary" value="居家與家具">居家與家具</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-secondary" value="服裝與鞋包">服裝與鞋包</button>
-                    <button type="button" class="btn btn-outline-secondary" value="保健與護理">保健與護理</button>
-                    <button type="button" class="btn btn-outline-secondary" value="相機與攝影">相機與攝影</button>
-                    <button type="button" class="btn btn-outline-secondary" value="美妝與保養">美妝與保養</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-secondary" value="食品與特產">食品與特產</button>
-                    <button type="button" class="btn btn-outline-secondary" value="視聽與家電">視聽與家電</button>     
-                    <button type="button" class="btn btn-outline-secondary" value="運動與休閒">運動與休閒</button>
-                    <button type="button" class="btn btn-outline-secondary" value="電腦與周邊">電腦與周邊</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-secondary" value="圖書與文具">圖書與文具</button>
-                    <button type="button" class="btn btn-outline-secondary" value="嬰幼與孕婦">嬰幼與孕婦</button>
-                    <button type="button" class="btn btn-outline-secondary" value="寵物與園藝">寵物與園藝</button>            
-                    <button type="button" class="btn btn-outline-secondary" value="情趣用品">情趣用品</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-secondary" value="無法分類">無法分類</button>
-                    <button type="button" class="btn btn-outline-secondary" value="選擇分類">清除</button>
-                </div>
-
-            </div>      
+                </tbody>
+            </table>
         </div>
-    </div>
-    <!--暫存區-->
-    <div id="text_hidden" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">tmp</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
 
-                <div class="modal-body">
-                    <input id="temp1" type="text" disabled="disabled" value=""><br>
-                    <input id="temp2" type="text" disabled="disabled" value=""><br>
-                    <input id="temp3" type="text" disabled="disabled" value=""><br>
-                    <input id="temp4" type="text" disabled="disabled" value=""><br>
-                </div>
 
+        <!--選擇分類頁面-->
+        <div id="category" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">選擇分類</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" value="手機與智慧穿戴">手機與智慧穿戴</button>
+                        <button type="button" class="btn btn-outline-secondary" value="手錶與飾品">手錶與飾品</button>
+                        <button type="button" class="btn btn-outline-secondary" value="交通與旅遊">交通與旅遊</button>
+                        <button type="button" class="btn btn-outline-secondary" value="居家與家具">居家與家具</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" value="服裝與鞋包">服裝與鞋包</button>
+                        <button type="button" class="btn btn-outline-secondary" value="保健與護理">保健與護理</button>
+                        <button type="button" class="btn btn-outline-secondary" value="相機與攝影">相機與攝影</button>
+                        <button type="button" class="btn btn-outline-secondary" value="美妝與保養">美妝與保養</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" value="食品與特產">食品與特產</button>
+                        <button type="button" class="btn btn-outline-secondary" value="視聽與家電">視聽與家電</button>
+                        <button type="button" class="btn btn-outline-secondary" value="運動與休閒">運動與休閒</button>
+                        <button type="button" class="btn btn-outline-secondary" value="電腦與周邊">電腦與周邊</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" value="圖書與文具">圖書與文具</button>
+                        <button type="button" class="btn btn-outline-secondary" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                        <button type="button" class="btn btn-outline-secondary" value="寵物與園藝">寵物與園藝</button>
+                        <button type="button" class="btn btn-outline-secondary" value="情趣用品">情趣用品</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" value="無法分類">無法分類</button>
+                        <button type="button" class="btn btn-outline-secondary" value="選擇分類">清除</button>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
+        <!--暫存區-->
+        <div id="text_hidden" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">tmp</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input id="temp1" type="text" disabled="disabled" value=""><br>
+                        <input id="temp2" type="text" disabled="disabled" value=""><br>
+                        <input id="temp3" type="text" disabled="disabled" value=""><br>
+                        <input id="temp4" type="text" disabled="disabled" value=""><br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--Script區-->
@@ -208,4 +210,5 @@ session_start();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.js?v=1118" charset="UTF-8"></script>
 </body>
+
 </html>
