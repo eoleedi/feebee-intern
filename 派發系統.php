@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="edit_record.html">記錄</a>
+                    <a class="nav-link" href="edit_record.php">記錄</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -42,7 +42,6 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="user_id">登出</button>
             </form>
         </div>
-
     </nav>
 
     <br>
