@@ -19,6 +19,7 @@
     <!--上標-->
     <nav class="navbar navbar-expand-sm navbar-dark">
         <a class="navbar-brand" href="派發系統.php">派發系統</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,14 +33,15 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <h4><a class="nav-link" href="#"><?php
-                    echo $_SESSION['account'];
-                        ?></a></h4>
+                        echo $_SESSION['account'];
+                    ?></a></h4>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="logOut.php">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="user_id">登出</button>
             </form>
         </div>
+
     </nav>
 
     <br>
@@ -47,8 +49,8 @@
     <div style="background-color:white" align="center">
         <h3 align="center">資料派發系統</h3>
         <br>
-        <div style="width: 630px;">
 
+        <div style="width: 630px;">
             <form method="get">
                 <div class="form-group row">
                     <button id="submit_num" class="btn btn-outline-info my-2 my-sm-0" type="submit" name="receive_btn" value="1">接收</button>
@@ -164,6 +166,7 @@
         <div id="category" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">選擇分類</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,42 +174,35 @@
                         </button>
                     </div>
 
-                    <form method="post">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
-                            <button type="button" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
-                        </div>
-                        <br>
-                        <input name="temp1" id="temp1" type="text" value="123"><br>
-                        <input name="temp2" id="temp2" type="text" value="123"><br>
-                        <input name="temp3" id="temp3" type="text" value="123"><br>
-                        <input name="temp4" id="temp4" type="text" value="123"><br>
-                    
-                    </form>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手機與智慧穿戴">手機與智慧穿戴</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="手錶與飾品">手錶與飾品</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="交通與旅遊">交通與旅遊</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="居家與家具">居家與家具</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="服裝與鞋包">服裝與鞋包</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="保健與護理">保健與護理</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="相機與攝影">相機與攝影</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="美妝與保養">美妝與保養</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="食品與特產">食品與特產</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="視聽與家電">視聽與家電</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="運動與休閒">運動與休閒</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="電腦與周邊">電腦與周邊</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="圖書與文具">圖書與文具</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="嬰幼與孕婦">嬰幼與孕婦</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="寵物與園藝">寵物與園藝</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="情趣用品">情趣用品</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="無法分類">無法分類</button>
+                        <button type="button" class="btn btn-outline-secondary" name="button_cat" value="選擇分類">清除</button>
+                    </div>
 
                 </div>
             </div>
@@ -218,7 +214,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js.js?v=1118" charset="UTF-8"></script>
+    <script type="text/javascript" src="js.js?v=113" charset="UTF-8"></script>
 </body>
 
 </html>
