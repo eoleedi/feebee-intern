@@ -162,8 +162,6 @@
                                     </tr>';
                                 }
                                 
-                                
-        
                                 mysqli_close($link);
                             }
                         }

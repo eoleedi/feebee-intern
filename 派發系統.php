@@ -126,7 +126,7 @@
                                     for($i=1; $i < $data_max+1; $i++){
                                         echo '<tr id='.'tr_id_'.$i.'>
                                                 <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
                                                 <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
                                                 <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
                                             </tr>';
@@ -142,7 +142,7 @@
                                     for($i=1; $i < $receive_num+1; $i++){
                                         echo '<tr id='.'tr_id_'.$i.'>
                                                 <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
                                                 <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
                                                 <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
                                             </tr>';
