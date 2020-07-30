@@ -43,13 +43,13 @@
 
     <?php
     if(!empty($_GET['errno'])){
-    if($_GET['errno']==1){
-    echo "使用者名稱或密碼錯誤";
-    }else if($_GET['errno']==2){
-    echo "請輸入使用者名稱密碼";
-    }else if($_GET['errno']==3){
-    echo "非法訪問，請輸入使用者名稱和密碼";
-    }
+        if($_GET['errno']==1){
+            echo "使用者名稱或密碼錯誤";
+        }else if($_GET['errno']==2){
+            echo "請輸入使用者名稱密碼";
+        }else if($_GET['errno']==3){
+            echo "非法訪問，請輸入使用者名稱和密碼";
+        }
     }
 
     ?>
