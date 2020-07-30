@@ -1,9 +1,10 @@
 <?php
-session_start();
-if ($_SESSION["account"] != TRUE){
-    header("location:index.php"); 
-}
+    session_start();
+    if ($_SESSION["account"] != TRUE){
+        header("location:index.php"); 
+    }
 ?>
+
 <!doctype html>
 <html>
 
@@ -87,7 +88,7 @@ if ($_SESSION["account"] != TRUE){
                                 'sbs_distribution'
                             );
                             
-                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND  product_cat IS NULL";
+                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
                             $result = mysqli_query($link, $sql_status_check);
 
                             $data = mysqli_fetch_all($result);

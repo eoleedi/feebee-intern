@@ -53,8 +53,8 @@
 </body>
 <?php
     if(!empty($_GET['errno'])){
-    if($_GET['errno']==1){
-    echo "使用者名稱或密碼錯誤";
+        if($_GET['errno']==1){
+            echo "使用者名稱或密碼錯誤";
         }
     }
 ?>
