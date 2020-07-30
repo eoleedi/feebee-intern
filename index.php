@@ -1,13 +1,3 @@
-<?php
-session_start();
-if ($_SESSION["account"] != TRUE){
-    header("location:index.php");
-    }
-else{
-    header("location:派發系統.php");
-}
-
-?>
 <!doctype html>
 <html>
 
@@ -23,7 +13,9 @@ else{
             } else {
                 myForm.submit();
             }
+
         }
+
     </script>
 </head>
 
@@ -47,7 +39,7 @@ else{
             <tr>
                 <td align="center">
                     <font color="#000000">密碼:</font>
-                    <input name="password" type="password" size="20">
+                    <input name="password" type="text" size="20">
                 </td>
             </tr>
             <tr>
