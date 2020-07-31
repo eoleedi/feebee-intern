@@ -51,7 +51,7 @@
         <br>
 
         <div style="width: 630px;">
-            <form method="get">
+            <form method="post">
                 <div class="form-group row">
                     <button id="submit_num" class="btn btn-outline-info my-2 my-sm-0" type="submit" name="receive_btn" value="1">接收</button>
                     <div class="col-sm-10">
@@ -75,11 +75,10 @@
                 </thead>
 
                 <tbody id="cat_select">
-
                     <!--新增php-->
                     <?php
                         $receive_num = 0;
-                        if (isset($_GET['receive_btn'])) {
+                        if (isset($_POST['receive_btn'])) {
                             $link = mysqli_connect(
                                 'localhost',
                                 'root',
@@ -104,7 +103,7 @@
                             $result = mysqli_query($link, $sql);
                             $data = mysqli_fetch_all($result);
 
-                            $receive_num = $_GET['receive_num'];
+                            $receive_num = $_POST['receive_num'];
 
                             $receive_max = 100;
                             $data_max = count($data);
