@@ -1,3 +1,4 @@
+//派發系統
 function showModal() {
     $('#category').modal('show'); 
 }
@@ -50,7 +51,6 @@ $('.cat_btn').click(function(){
     var id = $(event.target).val();
     get_cat(id);
 })
-
 
 
 

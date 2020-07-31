@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="edit_record.html">記錄</a>
+                    <a class="nav-link" href="edit_record.php">記錄</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -42,7 +42,6 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="user_id">登出</button>
             </form>
         </div>
-
     </nav>
 
     <br>
@@ -52,7 +51,7 @@
         <br>
 
         <div style="width: 630px;">
-            <form method="get">
+            <form method="post">
                 <div class="form-group row">
                     <button id="submit_num" class="btn btn-outline-info my-2 my-sm-0" type="submit" name="receive_btn" value="1">接收</button>
                     <div class="col-sm-10">
@@ -76,11 +75,10 @@
                 </thead>
 
                 <tbody id="cat_select">
-
                     <!--新增php-->
                     <?php
                         $receive_num = 0;
-                        if (isset($_GET['receive_btn'])) {
+                        if (isset($_POST['receive_btn'])) {
                             $link = mysqli_connect(
                                 'localhost',
                                 'root',
@@ -106,7 +104,7 @@
                             $result = mysqli_query($link, $sql);
                             $data = mysqli_fetch_all($result);
 
-                            $receive_num = $_GET['receive_num'];
+                            $receive_num = $_POST['receive_num'];
 
                             $receive_max = 100;
                             $data_max = count($data);
@@ -128,7 +126,7 @@
                                     for($i=1; $i < $data_max+1; $i++){
                                         echo '<tr id='.'tr_id_'.$i.'>
                                                 <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
                                                 <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
                                                 <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
                                             </tr>';
@@ -144,7 +142,7 @@
                                     for($i=1; $i < $receive_num+1; $i++){
                                         echo '<tr id='.'tr_id_'.$i.'>
                                                 <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i][0].'</th>
+                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
                                                 <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
                                                 <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
                                             </tr>';
