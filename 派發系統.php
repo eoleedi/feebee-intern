@@ -85,7 +85,6 @@
                                 '',
                                 'sbs_distribution'
                             );
-                            mysqli_query($link, 'SET NAMES UTF8');
                             
                             $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
                             $result = mysqli_query($link, $sql_status_check);
