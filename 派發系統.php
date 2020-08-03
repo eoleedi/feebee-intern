@@ -86,18 +86,6 @@
                                 'sbs_distribution'
                             );
                             
-                            $sql_status_check = "SELECT * FROM product WHERE product_status = 1 AND product_cat IS NULL";
-                            $result = mysqli_query($link, $sql_status_check);
-
-                            $data = mysqli_fetch_all($result);
-                            for($i=0; $i < count($data); $i++){
-                                $sql_clean = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 0, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                $result = mysqli_query($link, $sql_clean);
-                                mysqli_commit($link);
-                            }
-                            
-                            $data = 0;
-                            $result = 0;
 
                             $sql = "SELECT * FROM product WHERE product_status = 0";
                             $result = mysqli_query($link, $sql);
