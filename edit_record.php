@@ -158,7 +158,7 @@
                                             <th scope="col">'.$data[$i][3].'</th>
                                             <th scope="col">'.$data[$i][0].'</th>
                                             <th scope="col">'.$data[$i][1].'</th>
-                                            <th scope="col">'.date("Y-m-d H:i:s", strtotime(gmdate($data[$i][4]).' +8 hours')).'</th>  
+                                            <th scope="col">'.date("Y-m-d H:i:s", strtotime($data[$i][4])).'</th>  
                                     </tr>';
                                 }
                                 
