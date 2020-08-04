@@ -111,7 +111,7 @@
                                             mysqli_commit($link);
                                         }
         
-                                        for($i=1; $i < count($data); $i++){
+                                        for($i=1; $i < count($data)+1; $i++){
                                             echo '<tr id='.'tr_id_'.$i.'>
                                                     <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
                                                     <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
