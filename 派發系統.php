@@ -79,67 +79,52 @@
                     <?php
                         $receive_num = 0;
                         if (isset($_POST['receive_btn'])) {
+                            
                             $link = mysqli_connect(
                                 'localhost',
                                 'root',
                                 '',
                                 'sbs_distribution'
                             );
-                            
-
-                            $sql = "SELECT * FROM product WHERE product_status = 0";
-                            $result = mysqli_query($link, $sql);
-                            $data = mysqli_fetch_all($result);
 
                             $receive_num = $_POST['receive_num'];
 
+                            $is_num = is_numeric($receive_num);
+
                             $receive_max = 100;
-                            $data_max = count($data);
 
-                            if($data_max == 0){
-                                echo "<script>alert('大家很努力地做完了。');</script>";
-                            }
-                            if($receive_num > $receive_max){
-                                echo "<script>alert('超過上限，請重新輸入。');</script>";
-                            }
-                            elseif($receive_num > 0 && $receive_num <= 100){
-                                if($data_max < 100){
-                                    for($i=0; $i < $data_max; $i++){
-                                        $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                        $result = mysqli_query($link, $sql_change_status);
-                                        mysqli_commit($link);
-                                    }
-
-                                    for($i=1; $i < $data_max+1; $i++){
-                                        echo '<tr id='.'tr_id_'.$i.'>
-                                                <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
-                                                <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
-                                                <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
-                                            </tr>';
-                                    }; 
+                            if($is_num == TRUE){
+                                if($receive_num > $receive_max){
+                                    echo "<script>alert('超過上限，請重新輸入。');</script>";
                                 }
-                                if($data_max > 100){
-                                    for($i=0; $i < $receive_num; $i++){
-                                        $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                        $result = mysqli_query($link, $sql_change_status);
-                                        mysqli_commit($link);
+                                elseif($receive_num > 0 && $receive_num <= 100){
+                                    $sql = "SELECT * FROM product WHERE product_status = 0 LIMIT $receive_num FOR UPDATE";
+                                    $result = mysqli_query($link, $sql);
+                                    $data = mysqli_fetch_all($result);
+                                    if($data == []){
+                                        echo "<script>alert('大家很努力地做完了。');</script>";
                                     }
-
-                                    for($i=1; $i < $receive_num+1; $i++){
-                                        echo '<tr id='.'tr_id_'.$i.'>
-                                                <th scope="col"id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
-                                                <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
-                                                <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
-                                            </tr>';
-                                    }; 
+                                    else{
+                                        for($i=0; $i < count($data); $i++){
+                                            $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
+                                            $result = mysqli_query($link, $sql_change_status);
+                                            mysqli_commit($link);
+                                        }
+        
+                                        for($i=1; $i < count($data); $i++){
+                                            echo '<tr id='.'tr_id_'.$i.'>
+                                                    <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
+                                                    <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
+                                                    <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
+                                                    <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
+                                                </tr>';
+                                        }
+                                    }
                                 }
                             }
                             else{
                                 echo "<script>alert('別亂打，請重新輸入。');</script>";
                             }
-                            
                             $receive_num = 0;
                             mysqli_close($link);
                         }               
