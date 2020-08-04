@@ -79,13 +79,6 @@
                     <?php
                         $receive_num = 0;
                         if (isset($_POST['receive_btn'])) {
-                            
-                            $link = mysqli_connect(
-                                'localhost',
-                                'root',
-                                '',
-                                'sbs_distribution'
-                            );
 
                             $receive_num = $_POST['receive_num'];
 
@@ -98,9 +91,18 @@
                                     echo "<script>alert('超過上限，請重新輸入。');</script>";
                                 }
                                 elseif($receive_num > 0 && $receive_num <= 100){
+
+                                    $link = mysqli_connect(
+                                        'localhost',
+                                        'root',
+                                        '',
+                                        'sbs_distribution'
+                                    );
+
                                     $sql = "SELECT * FROM product WHERE product_status = 0 LIMIT $receive_num FOR UPDATE";
                                     $result = mysqli_query($link, $sql);
                                     $data = mysqli_fetch_all($result);
+                                    
                                     if($data == []){
                                         echo "<script>alert('大家很努力地做完了。');</script>";
                                     }
@@ -120,13 +122,14 @@
                                                 </tr>';
                                         }
                                     }
+                                    mysqli_close($link);
                                 }
                             }
                             else{
                                 echo "<script>alert('別亂打，請重新輸入。');</script>";
                             }
                             $receive_num = 0;
-                            mysqli_close($link);
+                            
                         }               
                     ?>
                 </tbody>
