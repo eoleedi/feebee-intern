@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="edit_record.php">記錄</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search.php">搜尋</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">

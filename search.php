@@ -56,9 +56,9 @@
         <div style="width: 630px;">
             <form method="post">
                 <div class="form-group row">
-                    <button id="submit_num" class="btn btn-outline-info my-2 my-sm-0" type="submit" name="receive_btn" value="1">接收</button>
+                    <button id="search_btn" class="btn btn-outline-info my-2 my-sm-0" type="submit" name="search_btn" value="1">搜尋</button>
                     <div class="col-sm-10">
-                        <input type="test" class="form-control" id="inputPassword" placeholder="上限一次100筆" name="receive_num">
+                        <input type="text" class="form-control" id="search_text" placeholder="請輸入關鍵字" name="search_text">
                     </div>
                 </div>
             </form>
@@ -70,19 +70,17 @@
 
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="sbs_no">筆數</th>
-                        <th scope="col" class="sbs_title">標題</th>
-                        <th scope="col" class="sbs_judge">判斷</th>
-                        <th scope="col" class="sbs_status">狀態</th>
+                        <th scope="col" class="">關鍵字</th>
+                        <th scope="col" class="">分類</th>
                     </tr>
                 </thead>
 
-                <tbody id="cat_select">
+                <tbody>
                     <!--新增php-->
                     <?php
-                        $receive_num = 0;
+                        $search = 0;
 
-                        if (isset($_POST['receive_btn'])) {
+                        if (isset($_POST['search_btn'])) {
 
                             $link = mysqli_connect(
                                 'localhost',
@@ -91,68 +89,27 @@
                                 'sbs_distribution'
                             );
 
-                            $sql_delay = "SELECT * FROM delay_time";
-                            $delay = mysqli_query($link, $sql_delay);
-                            $delay_status = mysqli_fetch_row($delay);
+                            $search = $_POST['search_text'];
+                            
+                            $sql = "SELECT * FROM product WHERE product_status = 2 AND product_title = \"".$search."\"";
+                            $result = mysqli_query($link, $sql);
+                            $search_result = mysqli_fetch_all($result);
 
-                            if($delay_status[0] == 0){
-
-                                $receive_num = $_POST['receive_num'];
-
-                                $is_num = is_numeric($receive_num);
-
-                                $receive_max = 100;
-
-                                if($is_num == TRUE){
-                                    if($receive_num > $receive_max){
-                                        echo "<script>alert('超過上限，請重新輸入。');</script>";
-                                    }
-                                    elseif($receive_num > 0 && $receive_num <= 100){
-                                        $sql_change_delay_status = "UPDATE delay_time SET delay_status = 1 WHERE delay_status = 0;";
-                                        $r = mysqli_query($link, $sql_change_delay_status);
-                                        mysqli_commit($link);
-
-                                        $sql = "SELECT * FROM product WHERE product_status = 0 LIMIT $receive_num";
-                                        $result = mysqli_query($link, $sql);
-                                        $data = mysqli_fetch_all($result);
-
-                                        if($data == []){
-                                            echo "<script>alert('大家很努力地做完了。');</script>";
-                                        }
-                                        else{
-                                            for($i=0; $i < count($data); $i++){
-                                                $sql_change_status = "UPDATE product SET product_title = \"".$data[$i][0]."\",product_cat = NULL, product_status = 1, product_editor = NULL, product_edit_time = NULL WHERE product_title = \"".$data[$i][0]."\"";
-                                                $result = mysqli_query($link, $sql_change_status);
-                                                mysqli_commit($link);
-                                            }
-            
-                                            for($i=1; $i < count($data)+1; $i++){
-                                                echo '<tr id='.'tr_id_'.$i.'>
-                                                        <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                        <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
-                                                        <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
-                                                        <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
-                                                    </tr>';
-                                            }
-                                        }
-
-                                        $sql_change_delay_status = "UPDATE delay_time SET delay_status = 0 WHERE delay_status = 1;";
-                                        $r = mysqli_query($link, $sql_change_delay_status);
-                                        mysqli_commit($link);
-                                        
-                                    }
-                                }
-                                else{
-                                    echo "<script>alert('別亂打，請重新輸入。');</script>";
-                                }
-
-                                $receive_num = 0;
-                                mysqli_close($link);
+                            if($search_result == []){
+                                echo "<script>alert('查無結果');</script>";
                             }
                             else{
-                                echo "<script>alert('請等候其他人派發完，請稍後再嘗試');</script>";
-                            }                    
-                        }               
+                                echo'<tr>
+                                        <th scope="col" id="search_title">'.$search_result[0][0].'</th>
+                                        <th scope="col"><button id="search_change_cat_btn" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()">'.$search_result[0][1].'</button></th>
+                                    </tr>';
+                            }
+
+
+
+                            mysqli_close($link);
+                        }
+                            
                     ?>
                 </tbody>
             </table>
@@ -211,7 +168,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js.js?v=114" charset="UTF-8"></script>
+    <script type="text/javascript" src="js.js?v=1122" charset="UTF-8"></script>
 </body>
 
 </html>

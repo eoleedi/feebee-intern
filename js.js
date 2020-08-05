@@ -52,7 +52,41 @@ $('.cat_btn').click(function(){
     get_cat(id);
 })
 
+//search
+function search(){
+    $('.btn-group .btn').click(function(){
+        
+        var search_title = $('#search_title').html();
+        var search_change_cat = $(event.target).val();
 
+        
+        $('#search_change_cat_btn').html($(event.target).val());
+
+        $('#category').modal('hide');
+        
+        $.ajax({
+            type: "POST",
+            url: "search_ajax.php",
+            data: {
+                'search_title' : search_title,
+                'search_change_cat' : search_change_cat,
+            },
+            dataType: "json",
+            error: function (xhr) { 
+                //alert("錯誤"+xhr.responseText);  
+                //return false;
+            },
+            success: function(data){
+                //alert(data.rcode);
+            }
+            
+        });
+
+    })
+}
+$('#search_change_cat_btn').click(function(){
+    search()
+})
 
 
     

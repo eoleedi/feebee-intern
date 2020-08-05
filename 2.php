@@ -1,6 +1,13 @@
 <?php
-   echo date('Y-m-d H:i:s',strtotime(gmdate('Y-m-d H:i:s').' +8 hours'));
 
+
+   $is_num1 = is_numeric('123qw');
+   if($is_num1 == TRUE){
+      echo 123;
+   }
+   else{
+      echo 456;
+   }
 ?>
 
 <!DOCTYPE html>
@@ -12,5 +19,3 @@
 </form>
 </body>
 </html>
-
-
