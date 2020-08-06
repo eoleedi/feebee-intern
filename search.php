@@ -92,7 +92,7 @@
 
                             $search = $_POST['search_text'];
                             
-                            $sql = "SELECT * FROM product WHERE product_status = 2 AND product_title = \"".$search."\"";
+                            $sql = "SELECT * FROM product WHERE product_status = 2 AND product_title LIKE \"".$search."%"."\"";
                             $result = mysqli_query($link, $sql);
                             $search_result = mysqli_fetch_all($result);
 
@@ -100,14 +100,15 @@
                                 echo "<script>alert('查無結果');</script>";
                             }
                             else{
-                                echo'<tr>
-                                        <th scope="col" id="search_title">'.$search_result[0][0].'</th>
-                                        <th scope="col">'.$search_result[0][1].'</th>
-                                        <th scope="col"><button id="search_change_cat_btn" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()">'.$search_result[0][1].'</button></th>
-                                    </tr>';
+                                for($i=1; $i<count($search_result)+1;$i++){
+                                    echo'<tr>
+                                            <th scope="col" id="search_title_'.$i.'">'.$search_result[$i-1][0].'</th>
+                                            <th scope="col">'.$search_result[$i-1][1].'</th>
+                                            <th scope="col" id="search_change_cat_btn_'.$i.'" class="search_change_cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>'.$search_result[$i-1][1].'</button></th>
+                                        </tr>';
+                                }
+                                
                             }
-
-
 
                             mysqli_close($link);
                         }
@@ -170,7 +171,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js.js?v=1122" charset="UTF-8"></script>
+    <script type="text/javascript" src="js.js?v=1522" charset="UTF-8"></script>
 </body>
 
 </html>

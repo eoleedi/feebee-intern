@@ -8,29 +8,10 @@
 <html>
 
     <head>
-        <style>
-            #header {
-            background-color:black;
-            color:white;
-            text-align:center;
-            padding:5px;
-            }
-            .sbs_user{
-                width: 25%;
-            }
-            .sbs_title{
-                width: 25%;
-            }
-            .sbs_cat{
-                width: 25%;
-            }
-            .sbs_time{
-                width: 25%;
-            }
-        </style>
         <meta charset="UTF-8">
         <title>記錄</title>
         <link rel=stylesheet type="text/css" href="bootstrap.css">
+        <link rel=stylesheet type="text/css" href="css.css?v=1323">
     </head>
 
     <body>
@@ -81,6 +62,7 @@
                     </div>
                 </form>
             </div>
+            
             <br>
 
             <table class="table">
@@ -108,10 +90,10 @@
                                 );
                                     
         
-                                $sql = "SELECT * FROM product WHERE product_status = 2";
+                                $sql = "SELECT * FROM product WHERE product_status = 2 ORDER BY product_edit_time DESC;";
                                 $result = mysqli_query($link, $sql);
                                 $data = mysqli_fetch_all($result);
-        
+                                
                                 for($i=0; $i < count($data); $i++){
                                     echo'<tr id='.'tr_id_'.$i.'>
                                             <th scope="col">'.$data[$i][3].'</th>
@@ -132,7 +114,7 @@
                                 );
                                     
         
-                                $sql = "SELECT * FROM product WHERE product_status = 2 AND product_editor LIKE \"$search_user"."%"."\"";
+                                $sql = "SELECT * FROM product WHERE product_status = 2 AND product_editor LIKE \"$search_user"."%"."\" ORDER BY product_edit_time DESC";
                                 $result = mysqli_query($link, $sql);
                                 $data = mysqli_fetch_all($result);
             

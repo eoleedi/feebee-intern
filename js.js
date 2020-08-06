@@ -53,16 +53,23 @@ $('.cat_btn').click(function(){
 })
 
 //search
-function search(){
+function search(id){
     $('.btn-group .btn').click(function(){
         
-        var search_title = $('#search_title').text();
-        var search_change_cat = $(event.target).val();
+        var search_title_id = '#search_title_' + id.toString();
+        var search_change_cat_btn_id = '#search_change_cat_btn_' + id.toString();
 
+        var search_title = $(search_title_id).text();
+        var search_change_cat = $(event.target).val();
         
-        $('#search_change_cat_btn').html($(event.target).val());
+        
+        $(search_change_cat_btn_id + ' button').html($(event.target).val());
 
         $('#category').modal('hide');
+
+        id = 0
+        search_title_id = 0
+        search_change_cat_btn_id = 0
         
         $.ajax({
             type: "POST",
@@ -84,8 +91,9 @@ function search(){
 
     })
 }
-$('#search_change_cat_btn').click(function(){
-    search()
+$('.search_change_cat_btn').click(function(){
+    var id = $(event.target).val();
+    search(id)
 })
 
 

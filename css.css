@@ -1,3 +1,4 @@
+/*派發系統*/
 #table_stats {
     table-layout:fixed;
     word-break:break-all;
@@ -26,6 +27,21 @@
     width:150px;
     height:75px;
 }
+
+/*edit_record*/
+.sbs_user{
+    width: 25%;
+}
+.sbs_title{
+    width: 25%;
+}
+.sbs_cat{
+    width: 25%;
+}
+.sbs_time{
+    width: 25%;
+}
+
 /*search*/
 .search_title{
     width: 40%;
