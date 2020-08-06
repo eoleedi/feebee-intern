@@ -123,7 +123,7 @@
                                 $link = mysqli_connect(
                                     'localhost',
                                     'root',
-                                    '',
+                                    'root',
                                     'sbs_distribution'
                                 );
                                     
@@ -147,7 +147,7 @@
                                 $link = mysqli_connect(
                                     'localhost',
                                     'root',
-                                    '',
+                                    'root',
                                     'sbs_distribution'
                                 );
                                     

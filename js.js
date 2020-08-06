@@ -20,8 +20,8 @@ function get_cat(id){
 
         $('#category').modal('hide');
 
-        var cat_title_id = $('#cat_title_'+ id.toString()).html();
-        var cat_btn_id = $('#cat_btn_'+ id.toString()+' .btn').html()
+        var cat_title_id = $('#cat_title_'+ id.toString()).text();
+        var cat_btn_id = $('#cat_btn_'+ id.toString()+' .btn').text()
 
         id = 0;
         cat_id = 0;
@@ -56,7 +56,7 @@ $('.cat_btn').click(function(){
 function search(){
     $('.btn-group .btn').click(function(){
         
-        var search_title = $('#search_title').html();
+        var search_title = $('#search_title').text();
         var search_change_cat = $(event.target).val();
 
         

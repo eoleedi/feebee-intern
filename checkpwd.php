@@ -1,7 +1,7 @@
 
 <?php
     session_start();
-    $link = mysqli_connect('localhost','root','','sbs_distribution');
+    $link = mysqli_connect('localhost','root','root','sbs_distribution');
     $account = $_POST["account"];
     $sql = "SELECT * FROM User WHERE user_id = '$account'";
     $result = mysqli_query($link, $sql);
