@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title>派發系統</title>
     <link rel=stylesheet type="text/css" href="bootstrap.css">
-    <link rel=stylesheet type="text/css" href="css.css?v=13">
+    <link rel=stylesheet type="text/css" href="css.css?v=133">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" class="sbs_no">筆數</th>
-                        <th scope="col" class="sbs_title">標題</th>
+                        <th scope="col" class="sbs_title">關鍵字</th>
                         <th scope="col" class="sbs_judge">判斷</th>
                         <th scope="col" class="sbs_status">狀態</th>
                     </tr>
@@ -129,7 +129,7 @@
                                             for($i=1; $i < count($data)+1; $i++){
                                                 echo '<tr id='.'tr_id_'.$i.'>
                                                         <th scope="col" id='.'cat_id_'.$i.'>'.$i.'</th>
-                                                        <th scope="col" id='.'cat_title_'.$i.'>'.$data[$i-1][0].'</th>
+                                                        <th scope="col" id='.'cat_title_'.$i.'><a href="https://www.google.com/search?q='.$data[$i-1][0].'&hl=zh-TW&sxsrf=ALeKk00OMLlgKSATF_-U5nao6cWdB20U2A:1596680670001&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiWsZ6Bw4XrAhXlx4sBHfXfCQYQ_AUoAXoECA0QAw&biw=1168&bih=717" target="_blank">'.$data[$i-1][0].'</a></th>
                                                         <th scope="col" id='.'cat_btn_'.$i.' class="cat_btn"><button class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()" value='.$i.'>選擇分類</button></th>
                                                         <th scope="col" style="color:#FF5151;" id='.'cat_status_'.$i.'>no</th>  
                                                     </tr>';

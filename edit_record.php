@@ -65,26 +65,6 @@
         </nav>
 
         <br>
-        
-        <!--
-        <div class="dropdown">
-
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select User
-            </button>
-
-            
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">ALL</a>
-                <a class="dropdown-item" href="#">user1</a>
-                <a class="dropdown-item" href="#">user2</a>
-                <a class="dropdown-item" href="#">user3</a>
-            </div>
-            
-
-            <br><br>
-        </div>
-        -->
 
         <div>
             <h3 align="center">編輯記錄</h3>
@@ -106,10 +86,10 @@
             <table class="table">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="sbs_user">USER</th>
-                        <th scope="col" class="sbs_title">TITLE</th>
-                        <th scope="col" class="sbs_cat">CATEGORY</th>
-                        <th scope="col" class="sbs_time">TIME</th>
+                        <th scope="col" class="sbs_user">編輯者</th>
+                        <th scope="col" class="sbs_title">關鍵字</th>
+                        <th scope="col" class="sbs_cat">類別</th>
+                        <th scope="col" class="sbs_time">編輯時間</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -152,7 +132,7 @@
                                 );
                                     
         
-                                $sql = "SELECT * FROM product WHERE product_status = 2 AND product_editor = \"$search_user\"";
+                                $sql = "SELECT * FROM product WHERE product_status = 2 AND product_editor LIKE \"$search_user"."%"."\"";
                                 $result = mysqli_query($link, $sql);
                                 $data = mysqli_fetch_all($result);
             

@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title>派發系統</title>
     <link rel=stylesheet type="text/css" href="bootstrap.css">
-    <link rel=stylesheet type="text/css" href="css.css?v=13">
+    <link rel=stylesheet type="text/css" href="css.css?v=213">
 </head>
 
 <body>
@@ -70,8 +70,9 @@
 
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="">關鍵字</th>
-                        <th scope="col" class="">分類</th>
+                        <th scope="col" class="search_title">關鍵字</th>
+                        <th scope="col" class="search_o_cat">原始類別</th>
+                        <th scope="col" class="search_c_cat">更改類別</th>
                     </tr>
                 </thead>
 
@@ -101,6 +102,7 @@
                             else{
                                 echo'<tr>
                                         <th scope="col" id="search_title">'.$search_result[0][0].'</th>
+                                        <th scope="col">'.$search_result[0][1].'</th>
                                         <th scope="col"><button id="search_change_cat_btn" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="showModal()">'.$search_result[0][1].'</button></th>
                                     </tr>';
                             }
